@@ -33,6 +33,28 @@ function DraggableSection({ section, index, sections, setSections, moveSection, 
     },
   });
 
+  const handleDeleteSection = (index, type) => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Deseas eliminar la sección de ${type}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteSection(index);
+        Swal.fire(
+          '¡Eliminado!',
+          `La sección de ${type} ha sido eliminada.`,
+          'success'
+        );
+      }
+    });
+  };
+
   return (
     <div ref={(node) => drop(node)} className={`p-4 bg-white rounded-lg shadow-xl ${isDragging ? 'opacity-50' : ''}`}>
       <div className="flex justify-between items-center mb-2">
@@ -75,7 +97,7 @@ function DraggableSection({ section, index, sections, setSections, moveSection, 
           <button onClick={() => editSection(index)} className="bg-blue-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-blue-600">
             <i className="fas fa-edit mr-1"></i> Editar
           </button>
-          <button onClick={() => deleteSection(index)} className="bg-red-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-red-600">
+          <button onClick={() => handleDeleteSection(index, section.type)} className="bg-red-500 text-white px-3 py-1 rounded-full shadow-md hover:bg-red-600">
             <i className="fas fa-trash mr-1"></i> Eliminar
           </button>
         </div>
@@ -171,6 +193,17 @@ export default function CrearCancion() {
     // Proceed with saving the song
   };
 
+  const handleAddSection = (type) => {
+    addSection(type);
+    Swal.fire({
+      icon: 'success',
+      title: '¡Éxito!',
+      text: `Sección para ${type} añadido!`,
+      timer: 1500,
+      showConfirmButton: false
+    });
+  };
+
   return (
     <DndProvider backend={isClient ? TouchBackend : HTML5Backend} options={isClient ? { enableMouseEvents: true } : {}}>
       <div className="min-h-screen bg-gray-100 text-black flex flex-col items-center p-4">
@@ -214,16 +247,16 @@ export default function CrearCancion() {
             </div>
           )}
           <div className="space-y-4">
-            <button onClick={() => addSection('Verso')} className="w-full bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600">
+            <button onClick={() => handleAddSection('Verso')} className="w-full bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600">
               <i className="fas fa-plus mr-2"></i> Añadir Verso
             </button>
-            <button onClick={() => addSection('Coro')} className="w-full bg-red-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-600">
+            <button onClick={() => handleAddSection('Coro')} className="w-full bg-red-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-600">
               <i className="fas fa-music mr-2"></i> Añadir Coro
             </button>
-            <button onClick={() => addSection('Hook')} className="w-full bg-purple-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-purple-600">
+            <button onClick={() => handleAddSection('Hook')} className="w-full bg-purple-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-purple-600">
               <i className="fas fa-star mr-2"></i> Añadir Hook
             </button>
-            <button onClick={() => addSection('Random')} className="w-full bg-yellow-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-yellow-600">
+            <button onClick={() => handleAddSection('Random')} className="w-full bg-yellow-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-yellow-600">
               <i className="fas fa-random mr-2"></i> Random
             </button>
             <button onClick={handleSaveSong} className="w-full bg-green-500 text-white px-3 py-2 rounded-full shadow-md hover:bg-green-600">
