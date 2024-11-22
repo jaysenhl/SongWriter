@@ -19,3 +19,73 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes pulse-blue {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.5);
+  }
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(34, 197, 94, 0.5);
+  }
+}
+
+@keyframes pulse-yellow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(234, 179, 8, 0.5);
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.5);
+  }
+}
+
+@keyframes pulse-purple {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(147, 51, 234, 0.5);
+  }
+}
+
+.button-blue {
+  box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.5);
+  animation: pulse-blue 2s infinite;
+}
+
+.button-green {
+  box-shadow: 0 0 15px 5px rgba(34, 197, 94, 0.5);
+  animation: pulse-green 2s infinite;
+}
+
+.button-yellow {
+  box-shadow: 0 0 15px 5px rgba(234, 179, 8, 0.5);
+  animation: pulse-yellow 2s infinite;
+}
+
+.button-red {
+  box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.5);
+  animation: pulse-red 2s infinite;
+}
+
+.button-purple {
+  box-shadow: 0 0 15px 5px rgba(147, 51, 234, 0.5);
+  animation: pulse-purple 2s infinite;
+}
