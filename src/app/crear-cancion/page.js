@@ -37,7 +37,7 @@ function DraggableSection({ section, index, sections, setSections, moveSection, 
     <div ref={(node) => drop(node)} className={`p-4 bg-white rounded-lg shadow-xl ${isDragging ? 'opacity-50' : ''}`}>
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-lg font-bold">{section.type}</h2>
-        <button ref={drag} className="cursor-move bg-gray-300 text-gray-700 px-2 py-1 rounded-full shadow-md hover:bg-gray-400">
+        <button ref={drag} className="cursor-move bg-gray-300 text-black px-2 py-1 rounded-full shadow-md hover:bg-gray-400">
           <i className="fas fa-hand-paper"></i>
         </button>
       </div>
@@ -173,7 +173,7 @@ export default function CrearCancion() {
 
   return (
     <DndProvider backend={isClient ? TouchBackend : HTML5Backend} options={isClient ? { enableMouseEvents: true } : {}}>
-      <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
+      <div className="min-h-screen bg-gray-100 text-black flex flex-col items-center p-4">
         <div className="flex justify-center mb-4">
           <Link href="/">
             <button className="bg-gray-800 text-white px-4 py-2 rounded shadow-md hover:bg-gray-900">
