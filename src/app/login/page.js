@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Login() {
   console.log('Login component rendered');
@@ -27,7 +28,7 @@ export default function Login() {
           animation: glow 2s infinite;
         }
       `}</style>
-      <img src="/lyricbox.png" alt="Logo" className="w-24 h-24 mb-12 mt-6 rounded-full shadow-lg glow" style={{ width: '350px', height: '350px' }} />
+      <Image src="/lyricbox.png" alt="Logo" className="w-24 h-24 mb-12 mt-6 rounded-full shadow-lg glow" width={350} height={350} />
       <div className="bg-white p-8 rounded shadow-md max-w-sm w-full">
         <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
         <input
