@@ -119,7 +119,7 @@ export default function CrearCancion() {
     if (isClient) {
       // Client-specific logic here
     }
-  }, [isClient]);
+  }, []);
 
   const addSection = (type) => {
     setSections([...sections, { type, content: '', editing: true }]);
