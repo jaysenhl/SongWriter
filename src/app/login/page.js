@@ -24,14 +24,26 @@ export default function Login() {
   };
 
   async function updateDisplayName(userId, displayName) {
-    const { data, error } = await supabase.auth.admin.updateUserById(userId, {
-      user_metadata: { display_name: displayName },
-    });
+    try {
+      const response = await fetch('/functions/updateDisplayName', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.SUPABASE_ACCESS_TOKEN}`,
+        },
+        body: JSON.stringify({ user_id: userId, display_name: displayName }),
+      });
 
-    if (error) {
-      console.error('Error updating display name:', error);
-    } else {
-      console.log('Display name updated successfully:', data);
+      const result = await response.json();
+      console.log('Response from Edge Function:', result);
+
+      if (response.ok) {
+        console.log('Display name updated successfully:', result.data);
+      } else {
+        console.error('Error updating display name:', result.error);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
     }
   }
 
