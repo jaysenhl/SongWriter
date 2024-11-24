@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css";
 
 const geistSans = localFont({

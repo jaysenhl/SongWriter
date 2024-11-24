@@ -1,5 +1,4 @@
 "use client";
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState, useEffect } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
