@@ -7,9 +7,14 @@ import { useState } from 'react';
 export default function Navbar() {
   const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleProfileMenu = () => {
+    setShowProfileMenu(!showProfileMenu);
   };
 
   return (
@@ -64,16 +69,36 @@ export default function Navbar() {
                 <Link href="/contact" className="text-gray-600 hover:text-gray-900">
                   Contact
                 </Link>
-                <Link 
-                  href="/profile" 
-                  className="flex items-center space-x-2 ml-4"
-                >
-                  <img 
-                    src={user.picture} 
-                    alt={user.name} 
-                    className="w-8 h-8 rounded-full"
-                  />
-                </Link>
+                <div className="relative">
+                  <button
+                    onClick={toggleProfileMenu}
+                    className="flex items-center space-x-2 ml-4 focus:outline-none"
+                  >
+                    <img 
+                      src={user.picture} 
+                      alt={user.name} 
+                      className="w-8 h-8 rounded-full"
+                    />
+                  </button>
+                  
+                  {/* Profile Dropdown */}
+                  {showProfileMenu && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                      <Link 
+                        href="/profile" 
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Profile
+                      </Link>
+                      <a 
+                        href="/api/auth/logout"
+                        className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                      >
+                        Logout
+                      </a>
+                    </div>
+                  )}
+                </div>
               </>
             ) : (
               <>
@@ -135,6 +160,12 @@ export default function Navbar() {
                 >
                   Profile
                 </Link>
+                <a 
+                  href="/api/auth/logout"
+                  className="block px-3 py-2 text-red-600 hover:text-red-700 hover:bg-gray-50 rounded-md"
+                >
+                  Logout
+                </a>
               </>
             ) : (
               <>
