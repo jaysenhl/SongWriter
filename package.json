@@ -3,26 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 3000",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^2.7.4",
     "@auth0/nextjs-auth0": "^3.5.0",
     "@fortawesome/fontawesome-free": "^6.5.1",
-    "@hookform/resolvers": "^3.9.1",
-    "@prisma/client": "^5.22.0",
     "@supabase/supabase-js": "^2.46.1",
     "@tinymce/tinymce-react": "^5.1.1",
     "autoprefixer": "^10.4.20",
-    "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "draft-js": "^0.11.7",
     "next": "15.0.3",
-    "next-auth": "^4.24.10",
-    "prisma": "^5.22.0",
     "quill": "^2.0.2",
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
@@ -30,11 +24,8 @@
     "react-dnd-html5-backend": "^16.0.1",
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.2",
     "react-quill": "^2.0.0",
-    "sweetalert2": "^11.14.5",
-    "tailwind-merge": "^2.5.4",
-    "zod": "^3.23.8"
+    "sweetalert2": "^11.14.5"
   },
   "devDependencies": {
     "eslint": "^8",
