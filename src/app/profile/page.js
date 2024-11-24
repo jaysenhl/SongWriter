@@ -4,6 +4,8 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import Navbar from '@/components/Navbar';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -28,10 +30,12 @@ export default function Profile() {
           {/* Profile Header */}
           <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
             <div className="flex items-center space-x-4">
-              <img 
+              <Image 
                 src={user.picture} 
                 alt={user.name} 
-                className="w-20 h-20 rounded-full"
+                width={80}
+                height={80}
+                className="rounded-full"
               />
               <div>
                 <h1 className="text-2xl font-bold">{user.name}</h1>
@@ -68,12 +72,12 @@ export default function Profile() {
 
           {/* Account Actions */}
           <div className="mt-6 flex justify-end space-x-4">
-            <a
+            <Link
               href="/api/auth/logout"
               className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
             >
               Logout
-            </a>
+            </Link>
           </div>
         </div>
       </div>

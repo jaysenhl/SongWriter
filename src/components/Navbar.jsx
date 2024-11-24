@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useState } from 'react';
 
@@ -74,10 +75,12 @@ export default function Navbar() {
                     onClick={toggleProfileMenu}
                     className="flex items-center space-x-2 ml-4 focus:outline-none"
                   >
-                    <img 
+                    <Image 
                       src={user.picture} 
                       alt={user.name} 
-                      className="w-8 h-8 rounded-full"
+                      width={32}
+                      height={32}
+                      className="rounded-full"
                     />
                   </button>
                   
@@ -90,12 +93,12 @@ export default function Navbar() {
                       >
                         Profile
                       </Link>
-                      <a 
+                      <Link 
                         href="/api/auth/logout"
                         className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                       >
                         Logout
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -114,12 +117,12 @@ export default function Navbar() {
                 <Link href="/contact" className="text-gray-600 hover:text-gray-900">
                   Contact
                 </Link>
-                <a 
+                <Link 
                   href="/api/auth/login"
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                   Login
-                </a>
+                </Link>
               </>
             )}
           </div>
@@ -160,12 +163,12 @@ export default function Navbar() {
                 >
                   Profile
                 </Link>
-                <a 
+                <Link 
                   href="/api/auth/logout"
                   className="block px-3 py-2 text-red-600 hover:text-red-700 hover:bg-gray-50 rounded-md"
                 >
                   Logout
-                </a>
+                </Link>
               </>
             ) : (
               <>
@@ -193,12 +196,12 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                <a 
+                <Link 
                   href="/api/auth/login"
                   className="block px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                 >
                   Login
-                </a>
+                </Link>
               </>
             )}
           </div>

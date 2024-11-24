@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function AuthenticatedHome() {
@@ -9,13 +10,15 @@ export default function AuthenticatedHome() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <img 
-          src={user.picture}
-          alt={user.name}
+        <Image 
+          src={user?.picture}
+          alt={user?.name}
+          width={80}
+          height={80}
           className="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-blue-500"
         />
         <h1 className="text-3xl font-bold">
-          Welcome, {user.name}!
+          Welcome, {user?.name}!
         </h1>
       </div>
       
