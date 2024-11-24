@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/Navbar';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 
 export default function Pricing() {
   const { user } = useUser();
@@ -38,12 +39,12 @@ export default function Pricing() {
               </ul>
             </div>
             <div className="px-6 py-4 bg-gray-50">
-              <a
+              <Link
                 href="/api/auth/login"
                 className="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -79,12 +80,12 @@ export default function Pricing() {
               </ul>
             </div>
             <div className="px-6 py-4 bg-gray-50">
-              <a
+              <Link
                 href="/api/auth/login"
                 className="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               >
                 Get Premium
-              </a>
+              </Link>
             </div>
           </div>
         </div>

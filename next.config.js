@@ -4,7 +4,9 @@ const nextConfig = {
     domains: ['lh3.googleusercontent.com'], // Permitir imágenes de Google
   },
   experimental: {
-    serverActions: true,
+    serverActions: {
+      allowedOrigins: ['localhost:3000'],
+    },
   },
 }
 
