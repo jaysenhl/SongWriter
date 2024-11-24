@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-100 text-black flex flex-col items-center justify-center">
       <h1 className="text-4xl mb-8 font-bold mb-2">Lyric Box</h1>
@@ -15,11 +15,9 @@ export default function Home() {
         <button className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors button-green">
           <i className="fas fa-music mr-2"></i> Ver Canciones
         </button>
-        
-          <button className="w-full bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition-colors button-purple">
-            <i className="fas fa-search mr-2"></i> Buscar Cancion
-          </button>
-        
+        <button className="w-full bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition-colors button-purple">
+          <i className="fas fa-search mr-2"></i> Buscar Canciones
+        </button>
       </div>
       <style jsx>{`
         .button-blue {

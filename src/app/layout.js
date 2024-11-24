@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+import Navbar from '@/components/layout/Navbar';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,10 +23,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <UserProvider>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+        </UserProvider>
       </body>
     </html>
   );
