@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Navbar() {
   const { user } = useUser();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-lg">
@@ -39,8 +41,11 @@ export default function Navbar() {
                 >
                   Crear Canción
                 </Link>
-                <div className="relative group">
-                  <button className="flex items-center space-x-2">
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="flex items-center space-x-2 focus:outline-none"
+                  >
                     <div className="w-8 h-8 relative rounded-full overflow-hidden">
                       {user.picture ? (
                         <Image
@@ -56,17 +61,19 @@ export default function Navbar() {
                       )}
                     </div>
                   </button>
-                  <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block">
-                    <div className="px-4 py-2 text-sm text-gray-700 border-b">
-                      {user.name || user.email}
+                  {isMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
+                      <div className="px-4 py-2 text-sm text-gray-700 border-b">
+                        {user.name || user.email}
+                      </div>
+                      <Link
+                        href="/api/auth/logout"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Cerrar Sesión
+                      </Link>
                     </div>
-                    <Link
-                      href="/api/auth/logout"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Cerrar Sesión
-                    </Link>
-                  </div>
+                  )}
                 </div>
               </div>
             )}
