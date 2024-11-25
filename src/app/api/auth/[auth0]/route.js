@@ -6,12 +6,7 @@ export const GET = handleAuth({
   login: handleLogin({
     returnTo: '/',
     authorizationParams: {
-      response_type: 'code',
-      scope: 'openid profile email',
-      prompt: 'select_account',
-      redirect_uri: `${process.env.AUTH0_BASE_URL}/api/auth/callback`,
-      domain: AUTH0_DOMAIN,
-      client_id: process.env.AUTH0_CLIENT_ID
+      redirect_uri: process.env.AUTH0_BASE_URL + '/api/auth/callback'
     }
   }),
   callback: handleCallback({
