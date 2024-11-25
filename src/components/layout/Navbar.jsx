@@ -9,6 +9,11 @@ export default function Navbar() {
   const { user } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    window.location.href = '/api/auth/login';
+  };
+
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,12 +26,12 @@ export default function Navbar() {
 
           <div className="flex items-center">
             {!user ? (
-              <Link
-                href="/api/auth/login"
+              <button
+                onClick={handleLogin}
                 className="ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Iniciar Sesión
-              </Link>
+              </button>
             ) : (
               <div className="flex items-center space-x-4">
                 <Link
